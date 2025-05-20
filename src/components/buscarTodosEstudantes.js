@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import EstudanteService from '../EstudanteService';
 import { Link } from 'react-router-dom';
 
-const buscarTodosEstudantes = () => {
+const BuscarTodosEstudantes = () => {
     const [estudantes, setEstudantes] = useState([]);
 
     useEffect(() => {
-        EstudanteService.getEstudantes().then((res) => {
+        EstudanteService.buscarTodosEstudantes().then((res) => {
             setEstudantes(res.data);
         });
     }, []);
@@ -46,4 +46,4 @@ const buscarTodosEstudantes = () => {
     );
 };
 
-export default buscarTodosEstudantes;
+export default BuscarTodosEstudantes;

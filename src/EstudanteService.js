@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ESTUDANTE_API_BASE_URL = 'http://localhost:8080/api/estudantes';
+const ESTUDANTE_API_BASE_URL = "http://localhost:8080/api/estudantes";
 
 
 class EstudanteService {
@@ -14,12 +14,12 @@ class EstudanteService {
         return axios.post(ESTUDANTE_API_BASE_URL, estudante);
     }
 
-    buscarEstudantePorId(estudanteId) {
-        return axios.get(`${ESTUDANTE_API_BASE_URL}/${estudanteId}`);
+    buscarEstudantePorId(id) {
+        return axios.get(`${ESTUDANTE_API_BASE_URL}/${id}`);
     }
 
-    atualizarEstudante(estudante, estudanteId) {
-        return axios.put(`${ESTUDANTE_API_BASE_URL}/${estudanteId}`, estudante);
+    atualizarEstudante(estudante) {
+        return axios.put(ESTUDANTE_API_BASE_URL, estudante); // Use PUT para atualizar
     }
 
     deletarEstudante(estudanteId) {

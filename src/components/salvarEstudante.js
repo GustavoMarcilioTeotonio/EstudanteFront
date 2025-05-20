@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EstudanteService from '../EstudanteService';
 import { useNavigate } from 'react-router-dom';
 
-const salvarEstudante = () => {
+const SalvarEstudante = () => {
     const [nome, setNome] = useState('');
     const [matricula, setMatricula] = useState('');
     const [numero, setNumero] = useState('');
@@ -11,7 +11,7 @@ const salvarEstudante = () => {
     const saveEstudante = (e) => {
         e.preventDefault();
         const estudante = { nome, matricula, numero };
-        EstudanteService.createEstudante(estudante).then(() => {
+        EstudanteService.salvarEstudante(estudante).then(() => {
             navigate('/estudantes');
         });
     };
@@ -49,4 +49,4 @@ const salvarEstudante = () => {
     );
 };
 
-export default salvarEstudante;
+export default SalvarEstudante;

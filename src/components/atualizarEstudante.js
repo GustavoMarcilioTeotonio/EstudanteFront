@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EstudanteService from '../EstudanteService';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const atualizarEstudante = () => {
+const AtualizarEstudante = () => {
     const { id } = useParams();
     const [nome, setNome] = useState('');
     const [matricula, setMatricula] = useState('');
@@ -10,7 +10,7 @@ const atualizarEstudante = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        ProductService.buscarEstudantePorId(id).then((res) => {
+        EstudanteService.buscarEstudantePorId(id).then((res) => {
             const estudante = res.data;
             setNome(estudante.nome);
             setMatricula(estudante.matricula);
@@ -18,10 +18,10 @@ const atualizarEstudante = () => {
         });
     }, [id]);
 
-    const updateEstudante = (e) => {
+    const atualizarEstudante = (e) => {
         e.preventDefault();
-        const estudante = { nome, matricula, numero };
-        EstudanteService.updateEstudante(estudante, id).then(() => {
+        const estudante = {id, nome, matricula, numero };
+        EstudanteService.atualizarEstudante(estudante).then(() => {
             navigate('/estudantes');
         });
     };
@@ -31,7 +31,7 @@ const atualizarEstudante = () => {
             <div className="container">
                 <div className="row">
                     <div className="card col-md-6 offset-md-3 offset-md-3">
-                        <h3 className="text-center">Update estudante</h3>
+                        <h3 className="text-center">atualizarEstudante </h3>
                         <div className="card-body">
                             <form>
                                 <div className="form-group">
@@ -49,7 +49,7 @@ const atualizarEstudante = () => {
                                     <input placeholder="Numero" name="Numero" className="form-control"
                                            value={numero} onChange={(e) => setNumero(e.target.value)} />
                                 </div>
-                                <button className="btn btn-success" onClick={updateEstudante}>Save</button>
+                                <button className="btn btn-success" onClick={atualizarEstudante}>Save</button>
                             </form>
                         </div>
                     </div>
@@ -59,4 +59,4 @@ const atualizarEstudante = () => {
     );
 };
 
-export default atualizarEstudante;
+export default AtualizarEstudante;
