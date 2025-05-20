@@ -22,8 +22,8 @@ class EstudanteService {
         return axios.put(ESTUDANTE_API_BASE_URL, estudante); // Use PUT para atualizar
     }
 
-    deletarEstudante(estudanteId) {
-        return axios.delete(`${ESTUDANTE_API_BASE_URL}/${estudanteId}`);
+    deletarEstudante(id) {
+        return axios.delete(`${ESTUDANTE_API_BASE_URL}/${id}`);
     }
 }
 
